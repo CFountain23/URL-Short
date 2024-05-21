@@ -29,7 +29,7 @@ export default class LinksDAO{
     static async createLink(fullLink) {
         try {
             //generate random sequence of characters & add to your site addy
-            const short = "http://localhost:3000/" + `${UniqueCharOTP(6)}`
+            const short = "http://localhost:4000/" + `${UniqueCharOTP(6)}`
             //enter the fullLink & shortLink into the database
             const linkDoc = {
                 fullLink: fullLink,

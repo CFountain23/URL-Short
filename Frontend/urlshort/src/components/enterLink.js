@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 import linkDataService from "../services/linkDataService";
+import Button from "@mui/material/Button";
+import { TextField } from "@mui/material";
+import Grid from "@mui/material/Grid";
 
 const EnterLink = () => {
   const [fullLink, setFullLink] = useState("Enter your link here!");
@@ -21,37 +24,40 @@ const EnterLink = () => {
   };
 
   const onCopy = () => {
-    navigator.clipboard.writeText(shortLink)
-  }
+    navigator.clipboard.writeText(shortLink);
+  };
 
   return (
     <>
-      {shortened ? (
-        <>
-          <label>
-            <input
-              type="text"
+      <Grid container rowSpacing={3} columns={1}>
+        <Grid xs={3}>
+          <p>URL-SHORT</p>
+        </Grid>
+        {shortened ? (
+          <Grid xs={3}>
+            <TextField
+              id="outlined-basic"
               value={shortLink}
-            />
-          </label>
-          <button type="submit" onClick={onCopy}>
-            Copy to Clipboard
-          </button>
-        </>
-      ) : (
-        <>
-          <label>
-            <input
-              type="text"
-              value={fullLink}
+              variant="outlined"
+            ></TextField>
+            <Button variant="contained" onClick={onCopy}>
+              Copy to Clipboard
+            </Button>
+          </Grid>
+        ) : (
+          <Grid xs={3}>
+            <TextField
+              id="outlined-basic"
+              variant="outlined"
+              label="Enter Your Link"
               onChange={(e) => setFullLink(e.target.value)}
-            />
-          </label>
-          <button type="submit" onClick={submitLink}>
-            Shorten Link!
-          </button>
-        </>
-      )}
+            ></TextField>
+            <Button variant="contained" onClick={submitLink}>
+              Shorten Link!
+            </Button>
+          </Grid>
+        )}
+      </Grid>
     </>
   );
 };

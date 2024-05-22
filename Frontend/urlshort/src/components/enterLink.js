@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import linkDataService from "../services/linkDataService";
 import Button from "@mui/material/Button";
 import { TextField } from "@mui/material";
-import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
 
 const EnterLink = () => {
   const [fullLink, setFullLink] = useState("Enter your link here!");
@@ -29,35 +29,34 @@ const EnterLink = () => {
 
   return (
     <>
-      <Grid container rowSpacing={3} columns={1}>
-        <Grid xs={3}>
-          <p>URL-SHORT</p>
-        </Grid>
-        {shortened ? (
-          <Grid xs={3}>
-            <TextField
-              id="outlined-basic"
-              value={shortLink}
-              variant="outlined"
-            ></TextField>
-            <Button variant="contained" onClick={onCopy}>
-              Copy to Clipboard
-            </Button>
-          </Grid>
-        ) : (
-          <Grid xs={3}>
-            <TextField
-              id="outlined-basic"
-              variant="outlined"
-              label="Enter Your Link"
-              onChange={(e) => setFullLink(e.target.value)}
-            ></TextField>
-            <Button variant="contained" onClick={submitLink}>
-              Shorten Link!
-            </Button>
-          </Grid>
-        )}
-      </Grid>
+      <Box display="flex" justifyContent={"center"} alignItems={"center"}>
+        <p>URL-SHORT</p>
+      </Box>
+
+      {shortened ? (
+        <Box display="flex" justifyContent={"center"} alignItems={"center"}>
+          <TextField
+            id="outlined-basic"
+            value={shortLink}
+            variant="outlined"
+          ></TextField>
+          <Button variant="contained" onClick={onCopy}>
+            Copy to Clipboard
+          </Button>
+        </Box>
+      ) : (
+        <Box display="flex" justifyContent={"center"} alignItems={"center"}>
+          <TextField
+            id="outlined-basic"
+            variant="outlined"
+            label="Enter Your Link"
+            onChange={(e) => setFullLink(e.target.value)}
+          ></TextField>
+          <Button variant="contained" onClick={submitLink}>
+            Shorten Link!
+          </Button>
+        </Box>
+      )}
     </>
   );
 };

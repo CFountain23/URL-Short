@@ -8,6 +8,7 @@ const EnterLink = () => {
   const [fullLink, setFullLink] = useState("Enter your link here!");
   const [shortened, setShortened] = useState(null);
   const [shortLink, setShortLink] = useState("");
+  const [placeholder, setPlaceHolder] = useState("")
 
   const submitLink = () => {
     var data = {
@@ -27,6 +28,7 @@ const EnterLink = () => {
     navigator.clipboard.writeText(shortLink);
   };
 
+
   return (
     <>
       <Box display="flex" justifyContent={"center"} alignItems={"center"}>
@@ -34,7 +36,11 @@ const EnterLink = () => {
       </Box>
 
       {shortened ? (
-        <Box display="flex" justifyContent={"center"} alignItems={"center"}>
+        <Box 
+        display="flex" 
+        justifyContent={"center"} 
+        alignItems={"center"}
+        >
           <TextField
             id="outlined-basic"
             value={shortLink}
@@ -45,14 +51,30 @@ const EnterLink = () => {
           </Button>
         </Box>
       ) : (
-        <Box display="flex" justifyContent={"center"} alignItems={"center"}>
+        <Box display="flex" justifyContent={"center"} alignItems={"center"}
+        borderRadius={'100px'}
+        bgcolor={'#E1F7F5'}
+        width={'50%'}
+        ml={'25%'}
+        mt={'10%'}
+        >
           <TextField
-            id="outlined-basic"
-            variant="outlined"
+            id="standard-basic"
+            variant="standard"
             label="Enter Your Link"
             onChange={(e) => setFullLink(e.target.value)}
+            fullWidth
+            margin="dense"
+            InputProps={{disableUnderline: true,}}
+            InputLabelProps={{shrink: false,}}
+            style={{
+              marginLeft: '1em',
+              marginBottom: '1em'
+            }}
           ></TextField>
-          <Button variant="contained" onClick={submitLink}>
+          <Button variant="contained" onClick={submitLink}
+          
+          >
             Shorten Link!
           </Button>
         </Box>
